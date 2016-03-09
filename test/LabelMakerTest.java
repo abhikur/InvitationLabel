@@ -11,7 +11,7 @@ public class LabelMakerTest {
     @Test
     public void testGetLabels() throws Exception {
         String[] args = {"-fl", "--file_./resource/Dummy","-c_Bangladesh"};
-        List<String> expected = new ArrayList<>();
+        List<String> expected = new ArrayList<String>();
         expected.add("Ms Melody Dooley, Bangladesh, 31");
         ArgsFilter argsFilter = new ArgsFilter();
         HashMap<String, String> filters = argsFilter.filter(args);

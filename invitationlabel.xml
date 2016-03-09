@@ -2,7 +2,7 @@
 <project name="invitationlebel" default="all">
   
   
-  <property file="invitationlebel.properties"/>
+  <property file="invitationlabel.properties"/>
   
   <property name="compiler.debug" value="on"/>
   <property name="compiler.generate.no.warnings" value="off"/>
@@ -100,7 +100,7 @@
   
   <!-- Modules -->
   
-  <import file="${basedir}/module_invitationlebel.xml"/>
+  <import file="/module_invitationlabel.xml"/>
   
   <target name="init" description="Build initialization">
     <!-- Perform any build initialization in this target -->

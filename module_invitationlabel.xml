@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="module_invitationlebel" default="compile.module.invitationlebel">
-  <dirname property="module.invitationlebel.basedir" file="${ant.file.module_invitationlebel}"/>
+  <dirname property="module.invitationlebel.basedir" file="/module_invitationlabel.xml"/>
   
   <property name="module.jdk.home.invitationlebel" value="${project.jdk.home}"/>
   <property name="module.jdk.bin.invitationlebel" value="${project.jdk.bin}"/>

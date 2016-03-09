@@ -19,11 +19,11 @@ public class GuestsTest {
         Age juliusAge = new Age("18");
         Address juliusAddress = new Address("Veda haven", "Vermont", "Macedonia");
 
-        HashMap<String, String> filters = new HashMap<>();
+        HashMap<String, String> filters = new HashMap<String, String>();
         filters.put("countryFilter","Macedonia");
         filters.put("ageFilter","15");
 
-        List<String> expected = new ArrayList<>();
+        List<String> expected = new ArrayList<String>();
         expected.add("Ms Julius Barrows, Macedonia, 18");
 
         guests.addPerson(name, prefixForJulius, juliusAge, juliusAddress);
@@ -39,11 +39,11 @@ public class GuestsTest {
         Age juliusAge = new Age("18");
         Address juliusAddress = new Address("Veda haven", "Vermont", "Macedonia");
 
-        HashMap<String, String> filters = new HashMap<>();
+        HashMap<String, String> filters = new HashMap<String, String>();
         filters.put("countryFilter","Macedonia");
         filters.put("ageFilter","15");
 
-        List<String> expected = new ArrayList<>();
+        List<String> expected = new ArrayList<String>();
         expected.add("Ms Barrows, Julius, Macedonia, 18");
 
         guests.addPerson(name, prefixForJulius, juliusAge, juliusAddress);

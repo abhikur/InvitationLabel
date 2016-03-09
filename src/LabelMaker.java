@@ -9,7 +9,7 @@ import static name.NameFormatter.getNameAsPerFormat;
 public class LabelMaker {
     private Guests guest;
     private String option;
-    List<String> labels = new ArrayList<>();
+    List<String> labels = new ArrayList<String>();
 
     public LabelMaker(String option) {
         this.guest = new Guests();
