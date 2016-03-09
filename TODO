@@ -1,0 +1,44 @@
+Library to print Invitation label
+
+Input -
+    A list of record (as File)
+    format -
+        firstName,lastName,prefix,age,city,state,country
+
+Requirement -
+    filter according to age
+    provide vouchers to person above age 20
+
+Output -
+    Mr First Last, country, age
+        or
+    Mr Last, First, country, age
+
+Prefix -
+    Male as Mr
+    Female as Ms
+
+=============================================================
+
+shell cmd - ./printLabel_fl --file_record.txt --filterByCountry_India or ./printLabel_lf --file_record.txt -f_India ’
+
+
+Identities -
+    person
+        name.Name,Age,Prefix,Address
+    Guests
+        allPerson
+
+-Create a library
+-Create main
+    arguments - recordFile, option, country
+-Bring record from file
+-Give content to label maker
+-print that according to option given
+
+======================================================================
+
+
+
+
+

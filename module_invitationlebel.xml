@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_invitationlebel" default="compile.module.invitationlebel">
+  <dirname property="module.invitationlebel.basedir" file="${ant.file.module_invitationlebel}"/>
+  
+  <property name="module.jdk.home.invitationlebel" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.invitationlebel" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.invitationlebel" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.invitationlebel" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="invitationlebel.output.dir" value="${module.invitationlebel.basedir}/out/production/InvitationLebel"/>
+  <property name="invitationlebel.testoutput.dir" value="${module.invitationlebel.basedir}/out/test/InvitationLebel"/>
+  
+  <path id="invitationlebel.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="invitationlebel.module.production.classpath">
+    <path refid="${module.jdk.classpath.invitationlebel}"/>
+  </path>
+  
+  <path id="invitationlebel.runtime.production.module.classpath">
+    <pathelement location="${invitationlebel.output.dir}"/>
+  </path>
+  
+  <path id="invitationlebel.module.classpath">
+    <path refid="${module.jdk.classpath.invitationlebel}"/>
+    <pathelement location="${invitationlebel.output.dir}"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  <path id="invitationlebel.runtime.module.classpath">
+    <pathelement location="${invitationlebel.testoutput.dir}"/>
+    <pathelement location="${invitationlebel.output.dir}"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.invitationlebel">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.invitationlebel">
+    <patternset refid="excluded.from.module.invitationlebel"/>
+  </patternset>
+  
+  <path id="invitationlebel.module.sourcepath">
+    <dirset dir="${module.invitationlebel.basedir}">
+      <include name="src"/>
+      <include name="resource"/>
+    </dirset>
+  </path>
+  
+  <path id="invitationlebel.module.test.sourcepath">
+    <dirset dir="${module.invitationlebel.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.invitationlebel" depends="compile.module.invitationlebel.production,compile.module.invitationlebel.tests" description="Compile module InvitationLebel"/>
+  
+  <target name="compile.module.invitationlebel.production" depends="register.custom.compilers" description="Compile module InvitationLebel; production classes">
+    <mkdir dir="${invitationlebel.output.dir}"/>
+    <javac2 destdir="${invitationlebel.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.invitationlebel}/javac">
+      <compilerarg line="${compiler.args.invitationlebel}"/>
+      <bootclasspath refid="invitationlebel.module.bootclasspath"/>
+      <classpath refid="invitationlebel.module.production.classpath"/>
+      <src refid="invitationlebel.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.invitationlebel"/>
+    </javac2>
+    
+    <copy todir="${invitationlebel.output.dir}">
+      <fileset dir="${module.invitationlebel.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.invitationlebel.basedir}/resource">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.invitationlebel.tests" depends="register.custom.compilers,compile.module.invitationlebel.production" description="compile module InvitationLebel; test classes" unless="skip.tests">
+    <mkdir dir="${invitationlebel.testoutput.dir}"/>
+    <javac2 destdir="${invitationlebel.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.invitationlebel}/javac">
+      <compilerarg line="${compiler.args.invitationlebel}"/>
+      <bootclasspath refid="invitationlebel.module.bootclasspath"/>
+      <classpath refid="invitationlebel.module.classpath"/>
+      <src refid="invitationlebel.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.invitationlebel"/>
+    </javac2>
+    
+    <copy todir="${invitationlebel.testoutput.dir}">
+      <fileset dir="${module.invitationlebel.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.invitationlebel" description="cleanup module">
+    <delete dir="${invitationlebel.output.dir}"/>
+    <delete dir="${invitationlebel.testoutput.dir}"/>
+  </target>
+</project>
