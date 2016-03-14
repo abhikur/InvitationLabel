@@ -11,18 +11,18 @@ public class Person {
 
     private Name name;
     private Age age;
-    private Prefix prefix;
+    private Honorific honorific;
     private Address address;
 
-    public Person(Name name, Age age, Prefix prefix, Address address) {
+    public Person(Name name, Age age, Honorific honorific, Address address) {
         this.name = name;
         this.age = age;
-        this.prefix = prefix;
+        this.honorific = honorific;
         this.address = address;
     }
     
     public List<List<String>> fieldsForLabel() {
-        return asList(asList(String.format("%s %s",prefix.getPrefix(),name.getFullName())),
+        return asList(asList(String.format("%s", name.getFullName(honorific.getHonorific()))),
                              asList(String.format("%s, %s",address.getCity(),address.getState()),address.getCountry()));
     }
 
@@ -30,17 +30,22 @@ public class Person {
         return country.equals(address.getCountry());
     }
 
+    private boolean isFromState(String state) {
+        return state.equals(address.getState());
+    }
 
     private boolean isOlderThanOrEqualTo(String age) {
         return Integer.parseInt(this.age.toString()) >= Integer.parseInt(age);
     }
 
     public boolean isMeetingRequirement(HashMap<String, String> filters) {
-        Boolean isCountryMatch = true, isAgeMatch = true;
-        if (filters.containsKey("countryFilter"))
-            isCountryMatch = isFromCountry(String.valueOf(filters.get("countryFilter")));
-        if (filters.containsKey("ageFilter"))
-            isAgeMatch = isOlderThanOrEqualTo(String.valueOf(filters.get("ageFilter")));
-        return isCountryMatch && isAgeMatch;
+        Boolean isCountryMatch = true, isAgeMatch = true, isStateMatch = true;
+        if (filters.containsKey("--filterCountry"))
+            isCountryMatch = isFromCountry(String.valueOf(filters.get("--filterCountry")));
+        if (filters.containsKey("--filterState"))
+            isStateMatch = isFromState(String.valueOf(filters.get("--filterState")));
+        if (filters.containsKey("--filterAge"))
+            isAgeMatch = isOlderThanOrEqualTo(String.valueOf(filters.get("--filterAge")));
+        return isCountryMatch && isAgeMatch && isStateMatch;
     }
 }

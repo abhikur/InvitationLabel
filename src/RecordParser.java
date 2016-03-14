@@ -27,13 +27,13 @@ public class RecordParser {
             String[] personDetail = dataSplitter(personInfo, ",");
 
             Name name = getNameAsPerFormat(personDetail[0], personDetail[1], option);
-            Prefix prefix = new Prefix(personDetail[2]);
+            Honorific Honorific = new Honorific(personDetail[2]);
             Age ageOfPerson = new Age(personDetail[3]);
             City city = new City(personDetail[4]);
             State state = new State(personDetail[5]);
             Country country = new Country(personDetail[6]);
             Address address = new Address(city, state, country);
-            guests.addPerson(name, prefix, ageOfPerson, address);
+            guests.addPerson(name, Honorific, ageOfPerson, address);
         }
     }
 }

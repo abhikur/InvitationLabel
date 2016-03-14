@@ -14,14 +14,14 @@ import static org.junit.Assert.assertTrue;
 public class PersonTest {
     public Name name;
     public Age age;
-    public Prefix prefix;
+    public Honorific Honorific;
     public Address address;
     public HashMap<String,String> filters = new HashMap<String, String>();
     @Before
     public void setup() {
         name = new NameAsFirstLast("Julius", "Barrows");
         age = new Age("20");
-        prefix = new Prefix("Female");
+        Honorific = new Honorific("Female");
         City city = new City("Macedonia");
         State state = new State("Vegas");
         Country country = new Country("Brazil");
@@ -32,7 +32,7 @@ public class PersonTest {
 
     @Test
     public void fieldsForLabelShouldGiveTheFieldsForInvitationCard() throws Exception {
-        Person person = new Person(name, age, prefix, address);
+        Person person = new Person(name, age, Honorific, address);
         List<List<String>> expected = asList(asList("Ms Julius Barrows"), asList("Macedonia, Vegas", "Brazil"));
         assertEquals(person.fieldsForLabel(), expected);
 
@@ -40,7 +40,7 @@ public class PersonTest {
 
     @Test
     public void testIsMeetingRequirement() throws Exception {
-        Person person = new Person(name, age, prefix, address);
+        Person person = new Person(name, age, Honorific, address);
         assertTrue(person.isMeetingRequirement(filters));
     }
 }

@@ -36,7 +36,12 @@ public class BorderMakerTest {
     @Test
     public void testSetBorderForTheGivenField() throws Exception {
         BorderMaker borderMaker = new BorderMaker();
-        List<String> expected = asList("+--------------------+","| Ms Julius Barrows  |","|--------------------|","| Veda haven,Vermont |","| Macedonia          |","+--------------------+");
+        String expected = "+--------------------+\n"+
+                          "| Ms Julius Barrows  |\n"+
+                          "|--------------------|\n"+
+                          "| Veda haven,Vermont |\n"+
+                          "| Macedonia          |\n"+
+                          "+--------------------+";
         assertEquals(borderMaker.setBorder(fields), expected);
     }
 }

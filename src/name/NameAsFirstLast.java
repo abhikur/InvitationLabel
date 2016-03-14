@@ -7,7 +7,7 @@ public class NameAsFirstLast extends Name {
     }
 
     @Override
-    public String getFullName() {
-        return firstName + " " + lastName;
+    public String getFullName(String honorific) {
+        return String.format("%s %s %s",honorific,firstName,lastName);
     }
 }

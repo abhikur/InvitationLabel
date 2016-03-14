@@ -17,10 +17,10 @@ public class LabelMakerTest {
     @Before
     public void setup() {
         Name name = new NameAsFirstLast("Melody", "Dooley");
-        Prefix prefix = new Prefix("Female");
+        Honorific Honorific = new Honorific("Female");
         Age age = new Age("20");
         Address address = new Address(new City("West Shanna"), new State("Vermont"), new Country("Bangladesh"));
-        guests.addPerson(name, prefix, age, address);
+        guests.addPerson(name, Honorific, age, address);
 
     }
 
@@ -33,7 +33,7 @@ public class LabelMakerTest {
         expected.add(label);
         BorderMaker borderMaker = new BorderMaker();
         LabelMaker labelMaker = new LabelMaker(borderMaker);
-        labelMaker.makeLabelForPerson(guests.filterRecord(filters));
+        labelMaker.makeLabelForGuests(guests.filterRecord(filters));
         assertEquals(labelMaker.getLabels(), expected);
     }
 }

@@ -8,59 +8,59 @@ public class ArgsFilterTest {
 
     @Test
     public void testFilterWhenOnlyCountryIsPassed() throws Exception {
-        String[] arguments = {"--countryFilter_India"};
+        String[] arguments = {"--filterCountry_India"};
         ArgsFilter argsFilter = new ArgsFilter(arguments);
         HashMap<String, String> filteredArgs = argsFilter.filter();
-        assertEquals(filteredArgs.get("countryFilter"), "India");
+        assertEquals(filteredArgs.get("--filterCountry"), "India");
     }
 
     @Test
     public void testFilterWhenOnlyAgeIsPassed() throws Exception {
-        String[] arguments = {"--ageFilter_20"};
+        String[] arguments = {"--filterAge_20"};
         ArgsFilter argsFilter = new ArgsFilter(arguments);
         HashMap<String, String> filteredArgs = argsFilter.filter();
-        assertEquals(filteredArgs.get("ageFilter"), "20");
+        assertEquals(filteredArgs.get("--filterAge"), "20");
     }
 
     @Test
     public void testFilterWhenOnlyFileIsPassed() throws Exception {
-        String[] arguments = {"--file_Dummy.txt"};
+        String[] arguments = {"Dummy.txt"};
         ArgsFilter argsFilter = new ArgsFilter(arguments);
         HashMap<String, String> filteredArgs = argsFilter.filter();
-        assertEquals(filteredArgs.get("fileFilter"), "Dummy.txt");
+        assertEquals(filteredArgs.get("file"), "Dummy.txt");
     }
 
     @Test
     public void testFilterWhenCountryAndAgeIsPassed() throws Exception {
-        String[] arguments = {"--countryFilter_India","--ageFilter_20"};
+        String[] arguments = {"--filterCountry_India","--filterAge_20"};
         ArgsFilter argsFilter = new ArgsFilter(arguments);
         HashMap<String, String> filteredArgs = argsFilter.filter();
-        assertEquals(filteredArgs.get("countryFilter"), "India");
-        assertEquals(filteredArgs.get("ageFilter"), "20");
+        assertEquals(filteredArgs.get("--filterCountry"), "India");
+        assertEquals(filteredArgs.get("--filterAge"), "20");
     }
 
     @Test
     public void testFilterWhenCountryAndFileIsPassed() throws Exception {
-        String[] arguments = {"--countryFilter_India","--file_Dummy"};
+        String[] arguments = {"--filterCountry_India","Dummy"};
         ArgsFilter argsFilter = new ArgsFilter(arguments);
         HashMap<String, String> filteredArgs = argsFilter.filter();
-        assertEquals(filteredArgs.get("countryFilter"), "India");
-        assertEquals(filteredArgs.get("fileFilter"), "Dummy");
+        assertEquals(filteredArgs.get("--filterCountry"), "India");
+        assertEquals(filteredArgs.get("file"), "Dummy");
     }
 
     @Test
     public void testFilterWhenCountryAgeAndFileIsPassed() throws Exception {
-        String[] arguments = {"--countryFilter_India","--file_Dummy","--ageFilter_20"};
+        String[] arguments = {"--filterCountry_India","Dummy","--filterAge_20"};
         ArgsFilter argsFilter = new ArgsFilter(arguments);
         HashMap<String, String> filteredArgs = argsFilter.filter();
-        assertEquals(filteredArgs.get("countryFilter"), "India");
-        assertEquals(filteredArgs.get("ageFilter"), "20");
-        assertEquals(filteredArgs.get("fileFilter"), "Dummy");
+        assertEquals(filteredArgs.get("--filterCountry"), "India");
+        assertEquals(filteredArgs.get("--filterAge"), "20");
+        assertEquals(filteredArgs.get("file"), "Dummy");
     }
 
     @Test
     public void isNeedHelpShouldReturnFalseIfArgsAreBetweenTwoAndFour() {
-        String[] args = {"-fl", "--file_records", "--ageFilter_20"};
+        String[] args = {"-fl", "records", "--filterAge_20"};
         ArgsFilter argsFilter = new ArgsFilter(args);
         assertFalse(argsFilter.isNeedHelp());
     }

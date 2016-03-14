@@ -10,5 +10,5 @@ public abstract class Name {
         this.lastName = lastName;
     }
 
-    public abstract String getFullName();
+    public abstract String getFullName(String honorific);
 }

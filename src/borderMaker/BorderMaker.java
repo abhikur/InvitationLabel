@@ -1,23 +1,21 @@
 package borderMaker;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BorderMaker {
 
-    public List<String> setBorder(List<List<String>> guestInfo) {
+    public String setBorder(List<List<String>> guestInfo) {
         int lengthOfBorder = findLengthOfBorder(guestInfo);
-        List<String> borderedLabel = new ArrayList<String>();
+        String borderedLabel = border("+", '-', lengthOfBorder)+"\n";
 
-        borderedLabel.add(border("+", '-', lengthOfBorder));
         for (int i = 0; i < guestInfo.size(); i++) {
             for (String field : guestInfo.get(i)) {
-                borderedLabel.add(border("|", field, lengthOfBorder));
+                borderedLabel += border("|", field, lengthOfBorder)+"\n";
             }
             if (i < guestInfo.size() - 1)
-                borderedLabel.add(border("|", '-', lengthOfBorder));
+                borderedLabel += border("|", '-', lengthOfBorder)+"\n";
         }
-        borderedLabel.add(border("+", '-', lengthOfBorder));
+        borderedLabel += border("+", '-', lengthOfBorder);
         return borderedLabel;
     }
 

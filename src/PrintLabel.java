@@ -1,5 +1,4 @@
 import borderMaker.BorderMaker;
-import com.sun.deploy.util.StringUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,12 +20,12 @@ public class PrintLabel {
         RecordParser recordParser = new RecordParser(guests);
         LabelMaker labelMaker = new LabelMaker(borderMaker);
 
-        String[] parsedRecord = recordParser.parse(filters.get("fileFilter"));
+        String[] parsedRecord = recordParser.parse(filters.get("file"));
         recordParser.storePersonAsPerOption(option,parsedRecord);
-        labelMaker.makeLabelForPerson(guests.filterRecord(filters));
-        List<List<String>> labels = labelMaker.getLabels();
-        for (List<String> label : labels) {
-            System.out.println(StringUtils.join(label, "\n"));
+        labelMaker.makeLabelForGuests(guests.filterRecord(filters));
+        List<String> labels = labelMaker.getLabels();
+        for (String label : labels) {
+            System.out.println(label);
         }
     }
 

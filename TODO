@@ -3,7 +3,7 @@ Library to print Invitation label
 Input -
     A list of record (as File)
     format -
-        firstName,lastName,prefix,age,city,state,country
+        firstName,lastName,Honorific,age,city,state,country
 
 Requirement -
     filter according to age
