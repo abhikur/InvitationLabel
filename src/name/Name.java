@@ -2,8 +2,8 @@ package name;
 
 public abstract class Name {
 
-    protected String lastName;
     protected String firstName;
+    protected String lastName;
 
     Name(String firstName, String lastName) {
         this.firstName = firstName;

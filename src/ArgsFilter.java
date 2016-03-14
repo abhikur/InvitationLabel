@@ -1,7 +1,21 @@
 import java.util.HashMap;
 
 public class ArgsFilter {
-    public HashMap<String, String> filter(String[] args) {
+
+
+    private String[] args;
+
+    public ArgsFilter(String[] args) {
+
+        this.args = args;
+    }
+
+    public boolean isNeedHelp() {
+        return (args.length < 2 || args.length > 4);
+
+    }
+    public HashMap<String, String> filter() {
+
         HashMap<String, String> filters = new HashMap<String, String>();
         for (String arg : args) {
             if (arg.contains("--filterCountry") || arg.contains("-c"))
@@ -9,7 +23,7 @@ public class ArgsFilter {
             if (arg.contains("--filterAge") || arg.contains("-a"))
                 filters.put("ageFilter", arg.split("_")[1]);
             if(arg.contains("--file"))
-                filters.put("file", arg.split("_")[1]);
+                filters.put("fileFilter", arg.split("_")[1]);
         }
         return filters;
     }

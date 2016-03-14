@@ -10,9 +10,19 @@ Requirement -
     provide vouchers to person above age 20
 
 Output -
-    Mr First Last, country, age
+    +---------------+
+    | Mr First Last |
+    |---------------|
+    | city, state   |
+    | country       |
+    +---------------+
         or
-    Mr Last, First, country, age
+    +----------------+
+    | Mr Last, First |
+    |----------------|
+    | city, state    |
+    | country        |
+    +----------------+
 
 Prefix -
     Male as Mr
@@ -21,7 +31,7 @@ Prefix -
 =============================================================
 
 shell cmd - ./printLabel_fl --file_record.txt --filterByCountry_India or ./printLabel_lf --file_record.txt -f_India ’
-
+shell cmd after adding field option - ./printLabel_fl.sh --file_record -c_India -f_name_address
 
 Identities -
     person
@@ -38,7 +48,10 @@ Identities -
 
 ======================================================================
 
+Implementation of border -
 
+Take fields as array of arrays - [name, [city, state], country]
+print outer border then fields and close by border. Separate fields by separator(|-------|).
 
 
 

@@ -1,6 +1,6 @@
 package name;
 
-public class NameAsFirstLast extends Name{
+public class NameAsFirstLast extends Name {
 
     public NameAsFirstLast(String firstName, String lastName) {
         super(firstName, lastName);
@@ -8,6 +8,6 @@ public class NameAsFirstLast extends Name{
 
     @Override
     public String getFullName() {
-        return firstName+" "+lastName;
+        return firstName + " " + lastName;
     }
 }
